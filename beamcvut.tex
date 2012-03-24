@@ -1,0 +1,104 @@
+\documentclass{beamer}
+
+\usetheme{cvut}
+
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{xltxtra}
+  \usepackage[english]{polyglossia}  
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[english]{babel}
+\fi
+
+\title{ČVUT beamer class}
+\author{Radomír Černoch}
+
+\begin{document}
+
+{ \setbeamertemplate{footline}{}
+  \frame{\maketitle} }
+
+
+
+\begin{frame}{What is \texttt{beamČVUT}?}
+  \begin{itemize}
+  \item \LaTeX{} beamer theme for presentations related to the
+    Czech~Technical University in Prague,
+  \item which has a \textit{lion on a ladder} graphics in the
+    frame title and on~the~first page,
+  \item with customizable frame header and footer logo.
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{How to use it?}
+Include $\mathtt{\backslash}$\texttt{usetheme\{cvut\}} in your \texttt{.tex} file. That's it!
+\end{frame}
+
+
+
+\framegraphic{\includegraphics[height=2em]{cvut-whitelion.pdf}}
+\footergraphic{\includegraphics[width=.2\paperwidth]{oppa-prague-eu.pdf}} 
+
+\begin{frame}{Customization}
+\begin{block}{Institute logo}
+Frames can show the logo of your institute in the top-right corner.
+
+\medskip
+
+$\mathtt{\backslash}$\texttt{framegraphic\{$\mathtt{\backslash}$includegraphics[height=2em]\{\%\\\ \ cvut-whitelion.pdf\}\}}
+\end{block}
+
+\begin{block}{Footer logo}
+Give thanks to the supporting organization by including their logo.
+
+\medskip
+
+$\mathtt{\backslash}$\texttt{footergraphic\{$\mathtt{\backslash}$includegraphics\%\\\ \ [width=.2$\mathtt{\backslash}$paperwidth]\{oppa-prague-eu.pdf\}\}} 
+\end{block}
+\end{frame}
+
+\framegraphic{}
+\footergraphic{}
+
+
+
+\begin{frame}{Installation}
+\begin{itemize}
+\item \textbf{Linux:} Copy the content of the \texttt{texmf}
+  directory from the \texttt{beamcvut.tar.gz} archive into
+  \texttt{\textasciitilde/texmf} directory (in your home folder).
+  Sometimes you have to call \texttt{texhash} to help \TeX{} finding new files.\\
+\texttt{\$ cd \textasciitilde}\\
+\texttt{\$ tar xvf \textasciitilde/Download/beamcvut*.tar.gz}\\
+\texttt{\$ rm beamcvut.*}\\
+\texttt{\$ cd texmf \&\& texhash}
+\item \textbf{Windows:} Heaven only knows! Consult the documentation of your \TeX{} distribution.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Work in progress}
+At the moment, there is no “elegant” way of removing the footer from the title frame. If you wish, you can use the following hack:
+
+\medskip
+
+\texttt{\{}\\
+\texttt{\ \ \textbackslash{}setbeamertemplate\{footline\}\{\}}\\
+\texttt{\ \ \textbackslash{}frame\{\textbackslash{}maketitle\}}\\
+\texttt{\}}
+\end{frame}
+
+
+
+\begin{frame}{Troubleshooting}
+\begin{center}
+Send an email to \href{mailto:radomir.cernoch@gmail.com}{Radomír Černoch} (yes, that's me).
+\href{mailto:radomir.cernoch@gmail.com}{\texttt{radomir.cernoch@gmail.com}}
+\end{center}
+\end{frame}
+
+\end{document}

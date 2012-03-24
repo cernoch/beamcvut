@@ -1,0 +1,97 @@
+% Copyright 2012 by Radomír Černoch
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\mode
+<all>
+{
+  \newcommand\framegraphic[1]{\def\insertframegraphic{#1}}
+  \framegraphic{}
+
+  \newcommand\footergraphic[1]{\def\insertfootergraphic{#1}}
+  \footergraphic{}
+
+  %\titlegraphic{\includegraphics[height=6em]{oppa-prague-eu.pdf}}
+}
+
+\mode<presentation>
+
+% Do not display navigation
+\setbeamertemplate{headline}{}
+
+% Frame title
+\setbeamertemplate{frametitle}
+{ \vspace{-3pt}% has no space from the top
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2em,dp=1em]{frametitle}%
+    \mbox{%
+      \raisebox{-1em}{% align the background image to the top
+      \includegraphics[height=3em,width=18em]{cvut-frametitle.pdf}}%
+      \hspace{-18em}% compensate the offset created by the background
+    }%
+    \raggedright\hspace*{1em}% left-padding of the frame title
+    \makebox[0.8\textwidth][l]{\insertframetitle}
+    \hfill% align the header logo to the right
+    \raisebox{-0.7em}{\insertframegraphic}%
+    \hspace*{1em}% right-padding of the header logo
+  \end{beamercolorbox}}%
+}
+
+% Footline displays the 
+\setbeamertemplate{footline}
+{ \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber% insert frame number
+    \hspace*{1em}%
+    \insertfootergraphic%
+    \hspace*{1em}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=2.25ex,dp=1ex,left]{title in head/foot}%
+    \hspace*{1em}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+% Title page shows a large image of the lion
+\setbeamertemplate{title page}
+{ 
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+  \end{centering}
+  \vfill% Here starts the CVUT-specific stuff
+  \begin{beamercolorbox}[wd=\paperwidth]{institute}
+    {\usebeamercolor[fg]{institute}
+      \includegraphics[width=\paperwidth]{cvut-biglion.pdf}\par%
+      \vspace{-.5\paperwidth}% compensate the background image
+      \begin{quotation}% indent to the right
+        \insertinstitute%
+      \end{quotation}%
+      \inserttitlegraphic%
+      \vspace{.5\paperwidth}%
+    }
+  \end{beamercolorbox}
+}
+
+\mode
+<all>
